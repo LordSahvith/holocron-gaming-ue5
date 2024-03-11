@@ -1,0 +1,12 @@
+{
+	"version": 1,
+	"changelists": [
+		{
+			"guid": "00000000000000000000000000000000",
+			"description": "Default Uncontrolled Changelist",
+			"files": [
+				"C:/Users/User/Documents/GitHub/holocron-gaming-ue5/matrix/Warehouse_Wreckage/WarehouseWreckage/Content/StarterContent/Particles/P_Ambient_Dust.uasset"
+			]
+		}
+	]
+}
