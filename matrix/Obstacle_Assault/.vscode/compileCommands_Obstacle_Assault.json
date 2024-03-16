@@ -1,0 +1,42 @@
+[
+	{
+		"file": "C:\\Users\\User\\Documents\\GitHub\\holocron-gaming-ue5\\matrix\\Obstacle_Assault\\Source\\Obstacle_Assault\\MovingPlatform.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\User\\Documents\\GitHub\\holocron-gaming-ue5\\matrix\\Obstacle_Assault\\.vscode\\compileCommands_Obstacle_Assault\\Obstacle_Assault.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\User\\Documents\\GitHub\\holocron-gaming-ue5\\matrix\\Obstacle_Assault\\Source\\Obstacle_Assault\\MovingPlatform.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\User\\Documents\\GitHub\\holocron-gaming-ue5\\matrix\\Obstacle_Assault\\.vscode\\compileCommands_Obstacle_Assault\\Obstacle_Assault.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\User\\Documents\\GitHub\\holocron-gaming-ue5\\matrix\\Obstacle_Assault\\Source\\Obstacle_Assault\\Obstacle_Assault.Build.cs",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\User\\Documents\\GitHub\\holocron-gaming-ue5\\matrix\\Obstacle_Assault\\.vscode\\compileCommands_Obstacle_Assault\\Obstacle_Assault.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\User\\Documents\\GitHub\\holocron-gaming-ue5\\matrix\\Obstacle_Assault\\Source\\Obstacle_Assault\\Obstacle_Assault.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\User\\Documents\\GitHub\\holocron-gaming-ue5\\matrix\\Obstacle_Assault\\.vscode\\compileCommands_Obstacle_Assault\\Obstacle_Assault.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\User\\Documents\\GitHub\\holocron-gaming-ue5\\matrix\\Obstacle_Assault\\Source\\Obstacle_Assault\\Obstacle_Assault.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\Hostx64\\x64\\cl.exe",
+			"@C:\\Users\\User\\Documents\\GitHub\\holocron-gaming-ue5\\matrix\\Obstacle_Assault\\.vscode\\compileCommands_Obstacle_Assault\\Obstacle_Assault.1.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.3\\Engine\\Source"
+	}
+]
