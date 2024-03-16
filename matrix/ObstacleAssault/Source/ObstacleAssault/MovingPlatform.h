@@ -31,4 +31,13 @@ public:
 	
 	UPROPERTY(EditAnywhere)
 	float MyFloat = 4.20;
+
+	UPROPERTY(EditAnywhere)
+	float InputFloatA = 2.3;
+
+	UPROPERTY(EditAnywhere)
+	float InputFloatB = 3.2;
+
+	UPROPERTY(EditAnywhere)
+	float APlusBFloat = 0.0;
 };

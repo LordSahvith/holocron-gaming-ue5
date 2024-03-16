@@ -15,6 +15,9 @@ void AMovingPlatform::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	MyInt = 16;
+
+	APlusBFloat = InputFloatA + InputFloatB;
 }
 
 // Called every frame
