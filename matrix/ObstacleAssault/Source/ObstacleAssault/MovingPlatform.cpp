@@ -5,9 +5,8 @@
 // Sets default values
 AMovingPlatform::AMovingPlatform()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
 }
 
 // Called when the game starts or when spawned
@@ -31,27 +30,24 @@ void AMovingPlatform::Tick(float DeltaTime)
 
 void AMovingPlatform::MovePlatform(float DeltaTime)
 {
-	FVector CurrentLocation = GetActorLocation();
-	
-	// add vector to that location
-	CurrentLocation = CurrentLocation + (PlatformVelocity * DeltaTime);
-	
-	// Move platform
-	SetActorLocation(CurrentLocation);
-	
-	// check how far it's moved
-	float DistanceMoved = FVector::Distance(StartLocation, CurrentLocation);
-	
 	// reverse direction
-	if (DistanceMoved > MoveDistance)
+	if (ShouldPlatformReturn())
 	{
-		float OverShoot = DistanceMoved - MoveDistance;
-		UE_LOG(LogTemp, Warning, TEXT("Platform: %s over shot by: %f"), *GetName(), OverShoot);
-
+		// check how far it's moved
 		FVector MoveDirection = PlatformVelocity.GetSafeNormal();
 		StartLocation = StartLocation + (MoveDirection * MoveDistance);
 		SetActorLocation(StartLocation);
 		PlatformVelocity = -PlatformVelocity;
+	}
+	else
+	{
+		FVector CurrentLocation = GetActorLocation();
+
+		// add vector location
+		CurrentLocation = CurrentLocation + (PlatformVelocity * DeltaTime);
+
+		// Move platform
+		SetActorLocation(CurrentLocation);
 	}
 }
 
@@ -61,3 +57,12 @@ void AMovingPlatform::RotatePlatform(float DeltaTime)
 	UE_LOG(LogTemp, Warning, TEXT("%s rotating..."), *GetName());
 }
 
+bool AMovingPlatform::ShouldPlatformReturn()
+{
+	return GetDistanceMoved() > MoveDistance;
+}
+
+float AMovingPlatform::GetDistanceMoved()
+{
+	return FVector::Distance(StartLocation, GetActorLocation());;
+}
