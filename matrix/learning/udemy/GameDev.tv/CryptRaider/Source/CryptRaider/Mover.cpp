@@ -1,6 +1,8 @@
-// Dev Lord Savith : Course: GameDev.tv
+// Dev: Lord Savith : Course: GameDev.tv
 
 #include "Mover.h"
+
+#include "Math/UnrealMathUtility.h"
 
 // Sets default values for this component's properties
 UMover::UMover()
@@ -12,31 +14,28 @@ UMover::UMover()
 	// ...
 }
 
-
 // Called when the game starts
 void UMover::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// ...
-	
+	OriginalLocation = GetOwner()->GetActorLocation();
 }
 
-
 // Called every frame
-void UMover::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
+void UMover::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	float MyFloat = 5;
-	float* YourFloat = &MyFloat;
-	UE_LOG(LogTemp, Display, TEXT("My Float: %f"), *YourFloat);
+	if (ShouldMove)
+	{
 
-	AActor* Owner = GetOwner();
-	FString OwnerName = Owner->GetActorNameOrLabel(); // using a struct FString or FVector use (*Owner).GetActorNameOrLabel();
-	UE_LOG(LogTemp, Display, TEXT("%s....I am your Tick!!!"), *OwnerName);
+		FVector CurrentLocation = GetOwner()->GetActorLocation();
+		FVector TargetLocation = OriginalLocation + MoveOffset;
+		float Speed = FVector::Distance(OriginalLocation, TargetLocation) / MoveTime;
 
-	FVector OwnerLocation = Owner->GetActorLocation();
-	UE_LOG(LogTemp, Display, TEXT("%s. Your location is: %s"), *OwnerName, *OwnerLocation.ToCompactString());
+		FVector NewLocation = FMath::VInterpConstantTo(CurrentLocation, TargetLocation, DeltaTime, Speed);
+
+		GetOwner()->SetActorLocation(NewLocation);
+	}
 }
-
