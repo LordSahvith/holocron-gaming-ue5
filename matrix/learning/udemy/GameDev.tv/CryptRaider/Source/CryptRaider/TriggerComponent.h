@@ -34,5 +34,5 @@ private:
 
 	UMover *Mover;
 
-	AActor *GetAcceptableActor() const;
+	AActor *GetTriggeringActor() const;
 };
