@@ -43,4 +43,6 @@ private:
 	UPhysicsHandleComponent *GetPhysicsHanlde() const;
 
 	bool GetGrabbableInReach(FHitResult& OutHitResult) const;
+	
+	FName GrabbedTag = "Grabbed";
 };

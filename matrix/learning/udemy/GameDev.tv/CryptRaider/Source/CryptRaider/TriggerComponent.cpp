@@ -1,6 +1,7 @@
 // Dev: Lord Savith : Course: GameDev.tv
 
 #include "TriggerComponent.h"
+#include "Grabber.h"
 
 // Sets default values for this component's properties
 UTriggerComponent::UTriggerComponent()
@@ -21,7 +22,7 @@ void UTriggerComponent::TickComponent(float DeltaTime, ELevelTick TickType, FAct
 
     AActor *Actor = GetTriggeringActor();
 
-    if (Actor != nullptr)
+    if (Actor)
     {
         UPrimitiveComponent *Component = Cast<UPrimitiveComponent>(Actor->GetRootComponent());
 
@@ -51,7 +52,9 @@ AActor *UTriggerComponent::GetTriggeringActor() const
 
     for (AActor *Actor : Actors)
     {
-        if (Actor->ActorHasTag(UnlockingTagName))
+        bool HasTriggeringTag = Actor->ActorHasTag(UnlockingTagName);
+        bool IsGrabbed = Actor->ActorHasTag("Grabbed"); // TODO: get from Grabber.h::GrabbedTag
+        if (HasTriggeringTag && !IsGrabbed)
         {
             return Actor;
         }
