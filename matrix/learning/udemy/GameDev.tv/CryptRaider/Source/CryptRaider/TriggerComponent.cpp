@@ -17,14 +17,14 @@ void UTriggerComponent::BeginPlay()
 
 void UTriggerComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction)
 {
-	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
+    Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-    TArray<AActor*> Actors;
+    TArray<AActor *> Actors;
     GetOverlappingActors(Actors);
 
-    for (int32 i = 0; i < Actors.Num(); i++)
+    for (AActor *Actor : Actors)
     {
-        FString ActorName = Actors[i]->GetActorNameOrLabel();
+        FString ActorName = Actor->GetActorNameOrLabel();
         UE_LOG(LogTemp, Display, TEXT("Overlapping: %s"), *ActorName);
     }
 }
