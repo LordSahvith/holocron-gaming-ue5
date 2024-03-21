@@ -1,6 +1,7 @@
 // DEV: Lord Savith ---- COURSE: GameDev.tv
 
 #include "BasePawn.h"
+#include "Components/CapsuleComponent.h"
 
 // Sets default values
 ABasePawn::ABasePawn()
