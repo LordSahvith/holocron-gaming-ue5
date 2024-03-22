@@ -23,6 +23,9 @@ protected:
 	virtual void BeginPlay() override;
 
 private:
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Combat", meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(VisibleAnywhere, Category = "Combat")
 	UStaticMeshComponent *ProjectileMesh;
+
+	UPROPERTY(VisibleAnywhere, Category = "Combat")
+	class UProjectileMovementComponent *ProjectileMovementComponent;
 };
