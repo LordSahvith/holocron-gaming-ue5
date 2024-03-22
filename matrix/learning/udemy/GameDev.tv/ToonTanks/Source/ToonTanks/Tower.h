@@ -6,9 +6,6 @@
 #include "BasePawn.h"
 #include "Tower.generated.h"
 
-/**
- *
- */
 UCLASS()
 class TOONTANKS_API ATower : public ABasePawn
 {
@@ -26,4 +23,10 @@ private:
 
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	float FireRange = 1000.f;
+
+	FTimerHandle FireRateTimerHandle;
+	float FireRate = 2.f;
+
+	void CheckFireCondition();
+	bool InFireRange();
 };
