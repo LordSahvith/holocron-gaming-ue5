@@ -28,3 +28,8 @@ void AGunBase::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 }
+
+void AGunBase::PullTrigger()
+{
+	UE_LOG(LogTemp, Warning, TEXT("You've been shot"));
+}
