@@ -33,7 +33,7 @@ void AGunBase::Tick(float DeltaTime)
 
 void AGunBase::PullTrigger()
 {
-	UGameplayStatics::SpawnEmitterAttached(MuzzleFlash, Mesh, TEXT("MuzzleFlashSocket"));
+	UGameplayStatics::SpawnEmitterAttached(MuzzleFlashEffect, Mesh, TEXT("MuzzleFlashSocket"));
 
 	APawn *OwnerPawn = Cast<APawn>(GetOwner());
 	if (OwnerPawn == nullptr)
@@ -52,6 +52,8 @@ void AGunBase::PullTrigger()
 	bool bSuccess = GetWorld()->LineTraceSingleByChannel(HitResult, Location, End, ECollisionChannel::ECC_GameTraceChannel1);
 	if (bSuccess)
 	{
+		FVector ShorDirection = -Rotation.Vector();
 		DrawDebugPoint(GetWorld(), HitResult.Location, 20, FColor::Red, true);
+		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ImpactEffect, HitResult.Location, ShorDirection.Rotation());
 	}
 }
