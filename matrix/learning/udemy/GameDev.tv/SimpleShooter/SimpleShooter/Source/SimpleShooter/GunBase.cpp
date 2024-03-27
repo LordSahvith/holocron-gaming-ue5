@@ -5,6 +5,7 @@
 #include "Components/SkeletalMeshComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "DrawDebugHelpers.h"
+#include "Engine/DamageEvents.h"
 
 // Sets default values
 AGunBase::AGunBase()
@@ -52,8 +53,15 @@ void AGunBase::PullTrigger()
 	bool bSuccess = GetWorld()->LineTraceSingleByChannel(HitResult, Location, End, ECollisionChannel::ECC_GameTraceChannel1);
 	if (bSuccess)
 	{
-		FVector ShorDirection = -Rotation.Vector();
-		DrawDebugPoint(GetWorld(), HitResult.Location, 20, FColor::Red, true);
-		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ImpactEffect, HitResult.Location, ShorDirection.Rotation());
+		FVector ShotDirection = -Rotation.Vector();
+		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ImpactEffect, HitResult.Location, ShotDirection.Rotation());
+
+		AActor *HitActor = HitResult.GetActor();
+		if (HitActor)
+		{
+			FPointDamageEvent DamageEvent(Damage, HitResult, ShotDirection, nullptr);
+			HitActor->TakeDamage(Damage, DamageEvent, OwnerController, this);
+			UE_LOG(LogTemp, Warning, TEXT("%s has taken damage: %f"), *HitActor->GetName(), Damage);
+		}
 	}
 }
