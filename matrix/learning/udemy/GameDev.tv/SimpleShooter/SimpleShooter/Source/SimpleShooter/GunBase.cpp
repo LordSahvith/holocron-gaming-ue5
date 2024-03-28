@@ -61,7 +61,6 @@ void AGunBase::PullTrigger()
 		{
 			FPointDamageEvent DamageEvent(Damage, HitResult, ShotDirection, nullptr);
 			HitActor->TakeDamage(Damage, DamageEvent, OwnerController, this);
-			UE_LOG(LogTemp, Warning, TEXT("%s has taken damage: %f"), *HitActor->GetName(), Damage);
 		}
 	}
 }
