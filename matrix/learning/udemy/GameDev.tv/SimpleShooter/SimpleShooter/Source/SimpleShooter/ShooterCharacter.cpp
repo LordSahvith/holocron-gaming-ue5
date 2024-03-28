@@ -23,6 +23,11 @@ void AShooterCharacter::BeginPlay()
 	Gun->SetOwner(this);
 }
 
+bool AShooterCharacter::IsDead() const
+{
+	return Health <= 0.f;
+}
+
 // Called every frame
 void AShooterCharacter::Tick(float DeltaTime)
 {
@@ -51,7 +56,7 @@ float AShooterCharacter::TakeDamage(float DamageAmount, struct FDamageEvent cons
 	DamageToApply = FMath::Min(Health, DamageToApply);
 	Health -= DamageToApply;
 	UE_LOG(LogTemp, Warning, TEXT("Remaining Health: %f"), Health);
-	
+
 	return DamageToApply;
 }
 
