@@ -2,6 +2,7 @@
 
 #include "ShooterAIController.h"
 #include "kismet/GameplayStatics.h"
+#include "BehaviorTree/BlackboardComponent.h"
 
 // Called when the game starts or when spawned
 void AShooterAIController::BeginPlay()
@@ -11,6 +12,8 @@ void AShooterAIController::BeginPlay()
     if (AIBehavior)
     {
         RunBehaviorTree(AIBehavior);
+        APawn *PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
+        GetBlackboardComponent()->SetValueAsVector(TEXT("PlayerLocation"), PlayerPawn->GetActorLocation());
     }
 }
 
