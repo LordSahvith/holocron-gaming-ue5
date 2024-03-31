@@ -1,15 +1,25 @@
 // DEV: Lord Savith -- COURSE: GameDev.tv Udemy
 
 #include "KillEmAllGameMode.h"
-#include "SimpleShooterPlayerController.h"
+#include "EngineUtils.h"
+#include "GameFramework/Controller.h"
 
 void AKillEmAllGameMode::PawnKilled(APawn* PawnKilled)
 {
     Super::PawnKilled(PawnKilled);
     
-    ASimpleShooterPlayerController* PlayerController = Cast<ASimpleShooterPlayerController>(PawnKilled->GetController());
+    APlayerController* PlayerController = Cast<APlayerController>(PawnKilled->GetController());
     if (PlayerController)
     {
-        PlayerController->GameHasEnded(nullptr, false);
+        EndGame(false);
+    }
+}
+
+void AKillEmAllGameMode::EndGame(bool bIsPlayerWinner)
+{
+    for (AController* Controller :  TActorRange<AController>(GetWorld()))
+    {
+        bool bIsWinner = Controller->IsPlayerController() == bIsPlayerWinner;
+        Controller->GameHasEnded(Controller->GetPawn(), bIsWinner);
     }
 }
