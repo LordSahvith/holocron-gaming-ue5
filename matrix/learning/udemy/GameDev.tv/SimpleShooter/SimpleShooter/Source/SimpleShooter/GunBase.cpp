@@ -63,6 +63,7 @@ AController *AGunBase::GetOwnerController() const
 void AGunBase::PullTrigger()
 {
 	UGameplayStatics::SpawnEmitterAttached(MuzzleFlashEffect, Mesh, TEXT("MuzzleFlashSocket"));
+	UGameplayStatics::SpawnSoundAttached(MuzzleSoundEffect, Mesh, TEXT("MuzzleFlashSocket"));
 
 	FHitResult Hit;
 	FVector ShotDirection;
@@ -70,7 +71,8 @@ void AGunBase::PullTrigger()
 	bool bSuccess = GunTrace(Hit, ShotDirection);
 	if (bSuccess)
 	{
-		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ImpactEffect, Hit.Location, ShotDirection.Rotation());
+		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ImpactFlashEffect, Hit.Location, ShotDirection.Rotation());
+		UGameplayStatics::PlaySoundAtLocation(GetWorld(), ImpactSoundEffect, Hit.Location, ShotDirection.Rotation());
 
 		AActor *HitActor = Hit.GetActor();
 		if (HitActor)
