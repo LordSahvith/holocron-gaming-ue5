@@ -29,20 +29,24 @@ public:
 
 private:
 	UPROPERTY(VisibleAnywhere)
-	class USceneComponent* RootSceneComponent;
+	class USceneComponent *RootSceneComponent;
 
 	UPROPERTY(VisibleAnywhere)
-	class USkeletalMeshComponent* Mesh;
+	class USkeletalMeshComponent *Mesh;
 
 	UPROPERTY(EditAnywhere)
-	UParticleSystem* MuzzleFlashEffect;
+	UParticleSystem *MuzzleFlashEffect;
 
 	UPROPERTY(EditAnywhere)
-	UParticleSystem* ImpactEffect;
+	UParticleSystem *ImpactEffect;
 
 	UPROPERTY(EditAnywhere)
 	float MaxRange = 1000.f;
 
 	UPROPERTY(EditAnywhere)
 	float Damage = 10.f;
+
+	bool GunTrace(FHitResult &OutHit, FVector &OutShotDirection);
+
+	AController *GetOwnerController() const;
 };
